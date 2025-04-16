@@ -1,5 +1,5 @@
-import { SCREEN_BREAKPOINTS } from "@/constants/screenBreakpoints";
-import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import { SCREEN_BREAKPOINTS } from '@/constants/screenBreakpoints';
 
 const initilaTheme = createTheme({
   breakpoints: {
@@ -12,24 +12,24 @@ const initilaTheme = createTheme({
     },
   },
   palette: {
-    mode: "light",
+    mode: 'light',
     primary: {
-      main: "#2563eb",
+      main: '#2563eb',
     },
     common: {
-      white: "#ffffff",
+      white: '#ffffff',
     },
   },
   typography: {
-    fontFamily: ['"Codecpro"', "sans-serif"].join(","),
+    fontFamily: ['"Codecpro"', 'sans-serif'].join(','),
     h1: {
-      marginBlock: "40px",
-      fontSize: "3.875rem",
+      marginBlock: '40px',
+      fontSize: '3.875rem',
       lineHeight: 1.35,
       fontWeight: 500,
     },
     h4: {
-      fontSize: "2.125rem",
+      fontSize: '2.125rem',
       lineHeight: 1.235,
       fontWeight: 600,
     },
@@ -42,8 +42,8 @@ const initilaTheme = createTheme({
       },
       styleOverrides: {
         root: {
-          paddingInline: "40px",
-          maxWidth: "1060px",
+          paddingInline: '40px',
+          maxWidth: '1060px',
         },
       },
     },
@@ -54,16 +54,16 @@ const theme = responsiveFontSizes(initilaTheme);
 
 theme.typography.h1 = {
   ...theme.typography.h1,
-  [theme.breakpoints.down("lg")]: {
-    fontSize: "3.125rem",
-    lineHeight: "1.4",
+  [theme.breakpoints.down('lg')]: {
+    fontSize: '3.125rem',
+    lineHeight: '1.4',
   },
 };
 
 theme.typography.h4 = {
   ...theme.typography.h4,
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "1.5rem",
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1.5rem',
     lineHeight: 1.334,
   },
 };

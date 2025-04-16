@@ -1,5 +1,5 @@
-import React, { type FC, type ReactNode } from "react";
-import styles from "./layout.module.css";
+import React, { type FC, type ReactNode } from 'react';
+import styles from './layout.module.css';
 
 interface Props {
   children: ReactNode;

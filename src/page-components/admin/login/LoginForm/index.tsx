@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useForm } from "react-hook-form";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Box, Button, TextField, Typography } from '@mui/material';
 
 type LoginFormData = {
   email: string;
@@ -19,7 +19,7 @@ export const LoginForm = () => {
   });
 
   const onSubmit = (data: LoginFormData) => {
-    console.log("✅ Login Data:", data);
+    console.log('✅ Login Data:', data);
   };
 
   return (
@@ -27,14 +27,14 @@ export const LoginForm = () => {
       component="form"
       onSubmit={handleSubmit(onSubmit)}
       sx={{
-        display: "flex",
-        flexBasis: "100%",
-        flexDirection: "column",
-        justifyContent: "center",
-        height: "100%",
+        display: 'flex',
+        flexBasis: '100%',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        height: '100%',
       }}
     >
-      <Typography variant="h4" sx={{ marginBottom: "40px" }}>
+      <Typography variant="h4" sx={{ marginBottom: '40px' }}>
         Welcome! <br />
         Login to continue
       </Typography>
@@ -43,15 +43,15 @@ export const LoginForm = () => {
         component="form"
         onSubmit={handleSubmit(onSubmit)}
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "24px",
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '24px',
         }}
       >
         <TextField
           label="Email Address"
           type="email"
-          {...register("email")}
+          {...register('email')}
           error={!!errors.email}
           helperText={errors.email?.message}
         />
@@ -59,7 +59,7 @@ export const LoginForm = () => {
         <TextField
           label="Password"
           type="password"
-          {...register("password")}
+          {...register('password')}
           error={!!errors.password}
           helperText={errors.password?.message}
         />
@@ -71,7 +71,7 @@ export const LoginForm = () => {
         color="primary"
         fullWidth
         sx={{
-          marginBlock: "16px",
+          marginBlock: '16px',
         }}
       >
         Login

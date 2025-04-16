@@ -1,20 +1,20 @@
-import Image from "next/image";
-import logoImage from "@/assets/images/logo.png";
-import { Typography, Box } from "@mui/material";
+import Image from 'next/image';
+import { Box, Typography } from '@mui/material';
+import logoImage from '@/assets/images/logo.png';
 
-const LOGO_ALT = "Treedis clone logo";
+const LOGO_ALT = 'Treedis clone logo';
 
 export const WelcomeBanner = () => (
   <Box
     sx={{
       display: {
-        xs: "none",
-        md: "flex",
+        xs: 'none',
+        md: 'flex',
       },
-      flexDirection: "column",
-      justifyContent: "center",
-      flexBasis: "100%",
-      height: "100%",
+      flexDirection: 'column',
+      justifyContent: 'center',
+      flexBasis: '100%',
+      height: '100%',
     }}
   >
     <Box display="flex">
@@ -27,11 +27,11 @@ export const WelcomeBanner = () => (
         component="span"
         variant="inherit"
         sx={{
-          display: "inline-block",
-          backgroundColor: "primary.main",
-          color: "common.white",
-          paddingInline: "4px",
-          borderRadius: "10px",
+          display: 'inline-block',
+          backgroundColor: 'primary.main',
+          color: 'common.white',
+          paddingInline: '4px',
+          borderRadius: '10px',
         }}
       >
         reality

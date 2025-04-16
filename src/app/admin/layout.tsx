@@ -1,5 +1,5 @@
-import { WelcomeBanner } from "@/page-components/admin/WelcomeBanner";
-import { Box, Container } from "@mui/material";
+import { Box, Container } from '@mui/material';
+import { WelcomeBanner } from '@/page-components/admin/WelcomeBanner';
 
 export default function AdminLayout({
   children,
@@ -7,12 +7,12 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Container sx={{ height: "100%" }}>
+    <Container sx={{ height: '100%' }}>
       <Box
         display="flex"
         justifyContent="space-between"
         gap="52px"
-        sx={{ height: "100%" }}
+        sx={{ height: '100%' }}
       >
         <WelcomeBanner />
         {children}
