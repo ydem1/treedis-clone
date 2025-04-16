@@ -17,7 +17,7 @@ const initilaTheme = createTheme({
       main: '#2055ff',
     },
     grey: {
-      300: "#66708533",
+      300: '#66708533',
     },
     common: {
       white: '#ffffff',
@@ -51,18 +51,18 @@ const initilaTheme = createTheme({
     },
     MuiTextField: {
       defaultProps: {
-        variant: "outlined",
+        variant: 'outlined',
       },
     },
     MuiOutlinedInput: {
       styleOverrides: {
         root: ({ theme }) => ({
-          borderRadius: "8px",
+          borderRadius: '8px',
 
           '& .MuiOutlinedInput-notchedOutline': {
             borderColor: theme.palette.grey[300],
             borderWidth: '1px',
-           },
+          },
 
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
             borderColor: theme.palette.primary.main,
@@ -71,23 +71,29 @@ const initilaTheme = createTheme({
         input: {
           padding: '12.5px 14px',
         },
-      }
+      },
     },
     MuiButton: {
       defaultProps: {
-        variant: "contained",
+        variant: 'contained',
       },
       styleOverrides: {
         root: {
           fontFamily: ['"Codecpro"', 'sans-serif'].join(','),
-          padding: "8px 22px", 
-          borderRadius: "8px", 
-          fontSize: "15px",
-          fontWeight: 600,
-          height: "56px",
-          textTransform: "capitalize",
-        }
-      }
+          textTransform: 'capitalize',
+          borderRadius: '8px',
+
+          '&.MuiButton-contained': {
+            padding: '8px 22px',
+            fontSize: '15px',
+            height: '56px',
+          },
+        },
+        text: {
+          fontSize: '14px',
+          padding: '6px 8px',
+        },
+      },
     },
   },
 });

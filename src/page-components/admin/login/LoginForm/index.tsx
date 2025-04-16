@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, Button, Link, TextField, Typography } from '@mui/material';
+import { PATHNAMES } from '@/constants/routes';
 
 type LoginFormData = {
   email: string;
@@ -33,7 +34,7 @@ export const LoginForm = () => {
         justifyContent: 'center',
         maxWidth: '451px',
         height: '100%',
-        marginInline: 'auto'
+        marginInline: 'auto',
       }}
     >
       <Typography variant="h4" sx={{ marginBottom: '40px' }}>
@@ -75,6 +76,19 @@ export const LoginForm = () => {
       >
         Login
       </Button>
+
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
+        <Button variant="text">Forgot password?</Button>
+
+        <Link href={PATHNAMES.REGISTER}>
+          <Button variant="text">Create New Account</Button>
+        </Link>
+      </Box>
     </Box>
   );
 };
