@@ -33,6 +33,7 @@ export const LoginForm = () => {
         justifyContent: 'center',
         maxWidth: '451px',
         height: '100%',
+        marginInline: 'auto'
       }}
     >
       <Typography variant="h4" sx={{ marginBottom: '40px' }}>
@@ -41,8 +42,6 @@ export const LoginForm = () => {
       </Typography>
 
       <Box
-        component="form"
-        onSubmit={handleSubmit(onSubmit)}
         sx={{
           display: 'flex',
           flexDirection: 'column',
