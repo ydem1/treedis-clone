@@ -1,4 +1,5 @@
 import { WelcomeBanner } from "@/components/WelcomeBanner";
+import { LoginForm } from "@/page-components/login/LoginForm";
 import { Box, Container } from "@mui/material";
 
 export default function Login() {
@@ -10,7 +11,7 @@ export default function Login() {
         sx={{ height: "100%" }}
       >
         <WelcomeBanner />
-        <WelcomeBanner />
+        <LoginForm />
       </Box>
     </Container>
   );

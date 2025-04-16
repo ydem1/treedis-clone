@@ -21,12 +21,17 @@ const initilaTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: ['"Inter"', "sans-serif"].join(","),
+    fontFamily: ['"Codecpro"', "sans-serif"].join(","),
     body1: {
       marginBlock: "40px",
-      fontSize: "62px",
-      fontWeight: 400,
+      fontSize: "3.875rem",
       lineHeight: 1.35,
+      fontWeight: 500,
+    },
+    h4: {
+      fontSize: "2.125rem",
+      lineHeight: 1.235,
+      fontWeight: 600,
     },
   },
   components: {
@@ -50,7 +55,16 @@ const theme = responsiveFontSizes(initilaTheme);
 theme.typography.body1 = {
   ...theme.typography.body1,
   [theme.breakpoints.down("md")]: {
-    fontSize: "24px",
+    fontSize: "3.125rem",
+    lineHeight: "1.4",
+  },
+};
+
+theme.typography.h4 = {
+  ...theme.typography.h4,
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "1.5rem",
+    lineHeight: 1.334,
   },
 };
 
