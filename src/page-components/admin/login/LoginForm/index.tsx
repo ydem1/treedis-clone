@@ -19,7 +19,7 @@ export const LoginForm = () => {
   });
 
   const onSubmit = (data: LoginFormData) => {
-    console.log('✅ Login Data:', data);
+    console.log('Login Data:', data);
   };
 
   return (
@@ -31,6 +31,7 @@ export const LoginForm = () => {
         flexBasis: '100%',
         flexDirection: 'column',
         justifyContent: 'center',
+        maxWidth: '451px',
         height: '100%',
       }}
     >
@@ -67,7 +68,6 @@ export const LoginForm = () => {
 
       <Button
         type="submit"
-        variant="contained"
         color="primary"
         fullWidth
         sx={{

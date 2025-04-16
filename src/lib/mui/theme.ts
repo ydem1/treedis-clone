@@ -14,7 +14,10 @@ const initilaTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#2563eb',
+      main: '#2055ff',
+    },
+    grey: {
+      300: "#66708533",
     },
     common: {
       white: '#ffffff',
@@ -46,6 +49,44 @@ const initilaTheme = createTheme({
           maxWidth: '1060px',
         },
       },
+    },
+    MuiTextField: {
+      defaultProps: {
+        variant: "outlined",
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          borderRadius: "8px",
+
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.grey[300],
+            borderWidth: '1px',
+           },
+
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.primary.main,
+          },
+        }),
+        input: {
+          padding: '12.5px 14px',
+        },
+      }
+    },
+    MuiButton: {
+      defaultProps: {
+        variant: "contained",
+      },
+      styleOverrides: {
+        root: {
+          padding: "8px 22px", 
+          borderRadius: "8px", 
+          fontWeight: 600,
+          height: "56px",
+          textTransform: "capitalize",
+        }
+      }
     },
   },
 });
