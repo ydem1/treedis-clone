@@ -24,17 +24,16 @@ const initilaTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: ['"Codecpro"', 'sans-serif'].join(','),
     h1: {
       marginBlock: '40px',
       fontSize: '3.875rem',
       lineHeight: 1.35,
-      fontWeight: 500,
     },
     h4: {
+      fontFamily: ['"Codecpro"', 'sans-serif'].join(','),
       fontSize: '2.125rem',
       lineHeight: 1.235,
-      fontWeight: 600,
+      fontWeight: 700,
     },
   },
   components: {
@@ -80,8 +79,10 @@ const initilaTheme = createTheme({
       },
       styleOverrides: {
         root: {
+          fontFamily: ['"Codecpro"', 'sans-serif'].join(','),
           padding: "8px 22px", 
           borderRadius: "8px", 
+          fontSize: "15px",
           fontWeight: 600,
           height: "56px",
           textTransform: "capitalize",
