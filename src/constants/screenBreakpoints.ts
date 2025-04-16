@@ -1,8 +1,7 @@
 export const SCREEN_BREAKPOINTS = {
-  DEFAULT: 0,
-  XS: 450,
+  XS: 0,
   SM: 600,
-  MD: 900,
-  LG: 60,
+  MD: 701,
+  LG: 900,
   XL: 1300,
 };

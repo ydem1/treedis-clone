@@ -8,6 +8,7 @@ export default function Login() {
       <Box
         display="flex"
         justifyContent="space-between"
+        gap="52px"
         sx={{ height: "100%" }}
       >
         <WelcomeBanner />

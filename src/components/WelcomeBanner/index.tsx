@@ -7,9 +7,13 @@ const LOGO_ALT = "Treedis clone logo";
 export const WelcomeBanner = () => (
   <Box
     sx={{
-      display: "flex",
+      display: {
+        xs: "none",
+        md: "flex",
+      },
       flexDirection: "column",
       justifyContent: "center",
+      flexBasis: "100%",
       height: "100%",
     }}
   >
@@ -17,11 +21,13 @@ export const WelcomeBanner = () => (
       <Image src={logoImage} alt={LOGO_ALT} width={35} height={50} />
     </Box>
 
-    <Typography variant="body1">
+    <Typography variant="h1">
       Take &nbsp;
       <Typography
         component="span"
+        variant="inherit"
         sx={{
+          display: "inline-block",
           backgroundColor: "primary.main",
           color: "common.white",
           paddingInline: "4px",

@@ -22,7 +22,7 @@ const initilaTheme = createTheme({
   },
   typography: {
     fontFamily: ['"Codecpro"', "sans-serif"].join(","),
-    body1: {
+    h1: {
       marginBlock: "40px",
       fontSize: "3.875rem",
       lineHeight: 1.35,
@@ -43,7 +43,7 @@ const initilaTheme = createTheme({
       styleOverrides: {
         root: {
           paddingInline: "40px",
-          maxWidth: "1062px",
+          maxWidth: "1060px",
         },
       },
     },
@@ -52,9 +52,9 @@ const initilaTheme = createTheme({
 
 const theme = responsiveFontSizes(initilaTheme);
 
-theme.typography.body1 = {
-  ...theme.typography.body1,
-  [theme.breakpoints.down("md")]: {
+theme.typography.h1 = {
+  ...theme.typography.h1,
+  [theme.breakpoints.down("lg")]: {
     fontSize: "3.125rem",
     lineHeight: "1.4",
   },
