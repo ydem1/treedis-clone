@@ -1,8 +1,11 @@
-import { WelcomeBanner } from "@/components/WelcomeBanner";
-import { LoginForm } from "@/page-components/login/LoginForm";
+import { WelcomeBanner } from "@/page-components/admin/WelcomeBanner";
 import { Box, Container } from "@mui/material";
 
-export default function Login() {
+export default function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <Container sx={{ height: "100%" }}>
       <Box
@@ -12,7 +15,7 @@ export default function Login() {
         sx={{ height: "100%" }}
       >
         <WelcomeBanner />
-        <LoginForm />
+        {children}
       </Box>
     </Container>
   );
