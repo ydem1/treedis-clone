@@ -1,9 +1,17 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Box, Button, Link, TextField, Typography } from '@mui/material';
+import { VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
+import {
+  Box,
+  Button,
+  IconButton,
+  Link,
+  TextField,
+  Typography,
+} from '@mui/material';
 import { PATHNAMES } from '@/constants/routes';
 import { LOGIN_FORM_VALIDATION_SCHEMA } from './constants';
 
@@ -13,6 +21,8 @@ type LoginFormData = {
 };
 
 export const LoginForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -23,6 +33,20 @@ export const LoginForm = () => {
 
   const onSubmit = (data: LoginFormData) => {
     console.log('Login Data:', data);
+  };
+
+  const handleClickShowPassword = () => setShowPassword(show => !show);
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.preventDefault();
+  };
+
+  const handleMouseUpPassword = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.preventDefault();
   };
 
   return (
@@ -61,10 +85,29 @@ export const LoginForm = () => {
 
         <TextField
           label="Password"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           {...register('password')}
           error={!!errors.password}
           helperText={errors.password?.message}
+          InputProps={{
+            endAdornment: (
+              <IconButton
+                aria-label={
+                  showPassword ? 'hide the password' : 'display the password'
+                }
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                onMouseUp={handleMouseUpPassword}
+                edge="start"
+              >
+                {showPassword ? (
+                  <VisibilityOutlined />
+                ) : (
+                  <VisibilityOffOutlined />
+                )}
+              </IconButton>
+            ),
+          }}
         />
       </Box>
 

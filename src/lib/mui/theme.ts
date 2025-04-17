@@ -76,6 +76,17 @@ const initilaTheme = createTheme({
         },
       },
     },
+    MuiIconButton: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          borderRadius: '6px',
+
+          '&:hover': {
+            color: theme.palette.primary.main,
+          },
+        }),
+      },
+    },
     MuiButton: {
       defaultProps: {
         variant: 'contained',
