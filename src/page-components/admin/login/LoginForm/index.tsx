@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
-import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
+import PasswordField from '@/components/FormField/PasswordField';
 import { PATHNAMES } from '@/constants/routes';
 import { LOGIN_FORM_VALIDATION_SCHEMA } from './constants';
 
@@ -15,8 +15,6 @@ type LoginFormData = {
 };
 
 export const LoginForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
-
   const {
     register,
     handleSubmit,
@@ -27,20 +25,6 @@ export const LoginForm = () => {
 
   const onSubmit = (data: LoginFormData) => {
     console.log('Login Data:', data);
-  };
-
-  const handleClickShowPassword = () => setShowPassword(show => !show);
-
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) => {
-    event.preventDefault();
-  };
-
-  const handleMouseUpPassword = (
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) => {
-    event.preventDefault();
   };
 
   return (
@@ -77,31 +61,11 @@ export const LoginForm = () => {
           helperText={errors.email?.message}
         />
 
-        <TextField
+        <PasswordField
           label="Password"
-          type={showPassword ? 'text' : 'password'}
-          {...register('password')}
+          register={register('password')}
           error={!!errors.password}
           helperText={errors.password?.message}
-          InputProps={{
-            endAdornment: (
-              <IconButton
-                aria-label={
-                  showPassword ? 'hide the password' : 'display the password'
-                }
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                onMouseUp={handleMouseUpPassword}
-                edge="start"
-              >
-                {showPassword ? (
-                  <VisibilityOutlined />
-                ) : (
-                  <VisibilityOffOutlined />
-                )}
-              </IconButton>
-            ),
-          }}
         />
       </Box>
 
