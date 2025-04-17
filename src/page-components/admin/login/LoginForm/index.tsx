@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, Link, TextField, Typography } from '@mui/material';
 import { PATHNAMES } from '@/constants/routes';
+import { LOGIN_FORM_VALIDATION_SCHEMA } from './constants';
 
 type LoginFormData = {
   email: string;
@@ -16,7 +18,7 @@ export const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormData>({
-    // resolver: yupResolver(schema),
+    resolver: yupResolver(LOGIN_FORM_VALIDATION_SCHEMA),
   });
 
   const onSubmit = (data: LoginFormData) => {

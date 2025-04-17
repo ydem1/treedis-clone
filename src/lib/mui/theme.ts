@@ -63,13 +63,16 @@ const initilaTheme = createTheme({
             borderColor: theme.palette.grey[300],
             borderWidth: '1px',
           },
-
-          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            borderColor: theme.palette.primary.main,
-          },
         }),
         input: {
           padding: '12.5px 14px',
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          marginBottom: '-10px',
         },
       },
     },
@@ -78,7 +81,7 @@ const initilaTheme = createTheme({
         variant: 'contained',
       },
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           fontFamily: ['"Codecpro"', 'sans-serif'].join(','),
           textTransform: 'capitalize',
           borderRadius: '8px',
@@ -87,8 +90,11 @@ const initilaTheme = createTheme({
             padding: '8px 22px',
             fontSize: '15px',
             height: '56px',
+            '&:hover': {
+              backgroundColor: theme.palette.primary.main,
+            },
           },
-        },
+        }),
         text: {
           fontSize: '14px',
           padding: '6px 8px',
