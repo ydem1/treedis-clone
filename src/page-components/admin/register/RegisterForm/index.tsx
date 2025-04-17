@@ -5,31 +5,38 @@ import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
 import { PATHNAMES } from '@/constants/routes';
-import { LOGIN_FORM_VALIDATION_SCHEMA } from './constants';
+import { REGISTER_FORM_VALIDATION_SCHEMA } from './constants';
 
-type LoginFormData = {
+type RegisterFormData = {
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
+  confirmPassword: string;
 };
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormData>({
-    resolver: yupResolver(LOGIN_FORM_VALIDATION_SCHEMA),
+  } = useForm<RegisterFormData>({
+    resolver: yupResolver(REGISTER_FORM_VALIDATION_SCHEMA),
   });
 
-  const onSubmit = (data: LoginFormData) => {
-    console.log('Login Data:', data);
+  const onSubmit = (data: RegisterFormData) => {
+    console.log('Register Data:', data);
   };
 
   const handleClickShowPassword = () => setShowPassword(show => !show);
+  const handleClickShowConfirmPassword = () =>
+    setShowConfirmPassword(show => !show);
 
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -58,17 +65,41 @@ export const LoginForm = () => {
       }}
     >
       <Typography variant="h4" sx={{ marginBottom: '40px' }}>
-        Welcome! <br />
-        Login to continue
+        Register
       </Typography>
+
+      <Link href={PATHNAMES.LOGIN}>
+        <Button variant="text">
+          <ArrowBackIcon />
+        </Button>
+      </Link>
 
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
           gap: '24px',
+          paddingBlock: '16px',
+          maxHeight: '60vh',
+          overflowY: 'auto',
         }}
       >
+        <TextField
+          label="First Name"
+          type="text"
+          {...register('firstName')}
+          error={!!errors.firstName}
+          helperText={errors.firstName?.message}
+        />
+
+        <TextField
+          label="Last Name"
+          type="text"
+          {...register('lastName')}
+          error={!!errors.lastName}
+          helperText={errors.lastName?.message}
+        />
+
         <TextField
           label="Email Address"
           type="email"
@@ -82,7 +113,14 @@ export const LoginForm = () => {
           type={showPassword ? 'text' : 'password'}
           {...register('password')}
           error={!!errors.password}
-          helperText={errors.password?.message}
+          helperText={
+            errors.password?.message || (
+              <span>
+                Must be at least 8 characters, contain 1 uppercase, 1 <br />
+                lowercase, and 1 digit.
+              </span>
+            )
+          }
           InputProps={{
             endAdornment: (
               <IconButton
@@ -103,6 +141,35 @@ export const LoginForm = () => {
             ),
           }}
         />
+
+        <TextField
+          label="Confirm Password"
+          type={showConfirmPassword ? 'text' : 'password'}
+          {...register('confirmPassword')}
+          error={!!errors.confirmPassword}
+          helperText={errors.confirmPassword?.message}
+          InputProps={{
+            endAdornment: (
+              <IconButton
+                aria-label={
+                  showConfirmPassword
+                    ? 'hide the password'
+                    : 'display the password'
+                }
+                onClick={handleClickShowConfirmPassword}
+                onMouseDown={handleMouseDownPassword}
+                onMouseUp={handleMouseUpPassword}
+                edge="start"
+              >
+                {showConfirmPassword ? (
+                  <VisibilityOutlined />
+                ) : (
+                  <VisibilityOffOutlined />
+                )}
+              </IconButton>
+            ),
+          }}
+        />
       </Box>
 
       <Button
@@ -113,21 +180,8 @@ export const LoginForm = () => {
           marginBlock: '16px',
         }}
       >
-        Login
+        Next
       </Button>
-
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
-        <Button variant="text">Forgot password?</Button>
-
-        <Link href={PATHNAMES.REGISTER}>
-          <Button variant="text">Create New Account</Button>
-        </Link>
-      </Box>
     </Box>
   );
 };

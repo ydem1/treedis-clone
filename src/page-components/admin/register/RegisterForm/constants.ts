@@ -1,0 +1,15 @@
+import * as Yup from 'yup';
+import {
+  EMAIL_VALIDATION_SCHEMA,
+  LENGTH_VALIDATION,
+  PASSWORD_VALIDATION_SCHEMA,
+  REPEAT_CONFIRM_PASSWORD_VALIDATION_SCHEMA,
+} from '@/constants/validationSchemas';
+
+export const REGISTER_FORM_VALIDATION_SCHEMA = Yup.object().shape({
+  firstName: LENGTH_VALIDATION(2, 30),
+  lastName: LENGTH_VALIDATION(2, 30),
+  email: EMAIL_VALIDATION_SCHEMA,
+  password: PASSWORD_VALIDATION_SCHEMA,
+  confirmPassword: REPEAT_CONFIRM_PASSWORD_VALIDATION_SCHEMA('password'),
+});
