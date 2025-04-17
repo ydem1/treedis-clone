@@ -3,6 +3,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
+import { useRegistrationStore } from '@/store/registrationStore';
 import { yupResolver } from '@hookform/resolvers/yup';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Box, Button, TextField, Typography } from '@mui/material';
@@ -22,13 +23,23 @@ export const RegisterForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<RegisterFormData>({
     resolver: yupResolver(REGISTER_FORM_VALIDATION_SCHEMA),
   });
 
+  const setData = useRegistrationStore(state => state.setData);
+
   const onSubmit = (data: RegisterFormData) => {
-    console.log('Register Data:', data);
+    setData({
+      email: data.email,
+      password: data.password,
+      fullName: `${data.firstName} ${data.lastName}`,
+      phone: '380962064212',
+    });
+
+    reset();
   };
 
   return (

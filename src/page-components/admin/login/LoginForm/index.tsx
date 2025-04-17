@@ -3,6 +3,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
+import { useLoginStoreStore } from '@/store/loginStore';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import PasswordField from '@/components/FormField/PasswordField';
@@ -18,13 +19,20 @@ export const LoginForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<LoginFormData>({
     resolver: yupResolver(LOGIN_FORM_VALIDATION_SCHEMA),
   });
+  const setData = useLoginStoreStore(state => state.setData);
 
   const onSubmit = (data: LoginFormData) => {
-    console.log('Login Data:', data);
+    setData({
+      email: data.email,
+      password: data.password,
+    });
+
+    reset();
   };
 
   return (
