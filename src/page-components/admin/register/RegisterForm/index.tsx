@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
+import PasswordField from '@/components/FormField/PasswordField';
 import { PATHNAMES } from '@/constants/routes';
 import { REGISTER_FORM_VALIDATION_SCHEMA } from './constants';
 
@@ -19,9 +19,6 @@ type RegisterFormData = {
 };
 
 export const RegisterForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
   const {
     register,
     handleSubmit,
@@ -32,22 +29,6 @@ export const RegisterForm = () => {
 
   const onSubmit = (data: RegisterFormData) => {
     console.log('Register Data:', data);
-  };
-
-  const handleClickShowPassword = () => setShowPassword(show => !show);
-  const handleClickShowConfirmPassword = () =>
-    setShowConfirmPassword(show => !show);
-
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) => {
-    event.preventDefault();
-  };
-
-  const handleMouseUpPassword = (
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) => {
-    event.preventDefault();
   };
 
   return (
@@ -108,67 +89,21 @@ export const RegisterForm = () => {
           helperText={errors.email?.message}
         />
 
-        <TextField
+        <PasswordField
           label="Password"
-          type={showPassword ? 'text' : 'password'}
-          {...register('password')}
+          register={register('password')}
           error={!!errors.password}
           helperText={
-            errors.password?.message || (
-              <span>
-                Must be at least 8 characters, contain 1 uppercase, 1 <br />
-                lowercase, and 1 digit.
-              </span>
-            )
+            errors.password?.message ||
+            'Password must contain 8 characters, 1 uppercase, 1 lowercase, and 1 digit.'
           }
-          InputProps={{
-            endAdornment: (
-              <IconButton
-                aria-label={
-                  showPassword ? 'hide the password' : 'display the password'
-                }
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                onMouseUp={handleMouseUpPassword}
-                edge="start"
-              >
-                {showPassword ? (
-                  <VisibilityOutlined />
-                ) : (
-                  <VisibilityOffOutlined />
-                )}
-              </IconButton>
-            ),
-          }}
         />
 
-        <TextField
+        <PasswordField
           label="Confirm Password"
-          type={showConfirmPassword ? 'text' : 'password'}
-          {...register('confirmPassword')}
+          register={register('confirmPassword')}
           error={!!errors.confirmPassword}
           helperText={errors.confirmPassword?.message}
-          InputProps={{
-            endAdornment: (
-              <IconButton
-                aria-label={
-                  showConfirmPassword
-                    ? 'hide the password'
-                    : 'display the password'
-                }
-                onClick={handleClickShowConfirmPassword}
-                onMouseDown={handleMouseDownPassword}
-                onMouseUp={handleMouseUpPassword}
-                edge="start"
-              >
-                {showConfirmPassword ? (
-                  <VisibilityOutlined />
-                ) : (
-                  <VisibilityOffOutlined />
-                )}
-              </IconButton>
-            ),
-          }}
         />
       </Box>
 
