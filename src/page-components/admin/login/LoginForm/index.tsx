@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useLoginStoreStore } from '@/store/loginStore';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, TextField, Typography } from '@mui/material';
-import PasswordField from '@/components/FormField/PasswordField';
+import { PasswordField } from '@/components/FormField/PasswordField';
 import { PATHNAMES } from '@/constants/routes';
 import { LOGIN_FORM_VALIDATION_SCHEMA } from './constants';
 

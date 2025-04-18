@@ -1,3 +1,5 @@
+'use client';
+
 import React, { FC, useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import { VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
@@ -44,5 +46,3 @@ export const PasswordField: FC<PasswordFieldProps> = ({
     />
   );
 };
-
-export default PasswordField;

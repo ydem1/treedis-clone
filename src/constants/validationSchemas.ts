@@ -4,7 +4,7 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{1,}$/;
 
 export const EMAIL_VALIDATION_SCHEMA = Yup.string()
   .trim()
-  .required('email is a required field')
+  .required('Required field')
   .test('custom-email', 'Email must be a valid email address', value =>
     emailRegex.test(value || ''),
   );
@@ -15,6 +15,19 @@ export const LENGTH_VALIDATION = (min: number, max: number) =>
     .required('Required field')
     .min(min, `Minimum length is ${min}`)
     .max(max, `Maximum length is ${max}`);
+
+export const PHONE_LENGTH_VALIDATION = (min: number, max: number) =>
+  Yup.string()
+    .required('Required field')
+    .test(
+      'phone-length',
+      `Phone number must have between ${min} and ${max} digits`,
+      value => {
+        if (!value) return false;
+        const digitsOnly = value.replace(/\D/g, '');
+        return digitsOnly.length >= min && digitsOnly.length <= max;
+      },
+    );
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
