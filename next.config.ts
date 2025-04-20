@@ -1,10 +1,14 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  i18n: {
-    locales: ['en', 'he'],
-    defaultLocale: 'en',
-    // localeDetection: false,
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/en',
+        permanent: true,
+      },
+    ];
   },
 };
 
