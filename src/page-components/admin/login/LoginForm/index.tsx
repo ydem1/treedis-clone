@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import Link from 'next/link';
 import { useLoginStoreStore } from '@/store/loginStore';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { PasswordField } from '@/components/FormField/PasswordField';
+import { LocalizedLink } from '@/components/Link';
 import { PATHNAMES } from '@/constants/routes';
 import { LOGIN_FORM_VALIDATION_SCHEMA } from './constants';
 
@@ -96,9 +96,9 @@ export const LoginForm = () => {
       >
         <Button variant="text">Forgot password?</Button>
 
-        <Link href={PATHNAMES.REGISTER}>
+        <LocalizedLink href={PATHNAMES.REGISTER}>
           <Button variant="text">Create New Account</Button>
-        </Link>
+        </LocalizedLink>
       </Box>
     </Box>
   );

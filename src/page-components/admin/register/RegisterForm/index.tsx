@@ -2,13 +2,13 @@
 
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import Link from 'next/link';
 import { useRegistrationStore } from '@/store/registrationStore';
 import { yupResolver } from '@hookform/resolvers/yup';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { PasswordField } from '@/components/FormField/PasswordField';
 import { PhoneField } from '@/components/FormField/PhoneField';
+import { LocalizedLink } from '@/components/Link';
 import { PATHNAMES } from '@/constants/routes';
 import { REGISTER_FORM_VALIDATION_SCHEMA } from './constants';
 
@@ -58,11 +58,11 @@ export const RegisterForm = () => {
           Register
         </Typography>
 
-        <Link href={PATHNAMES.LOGIN}>
+        <LocalizedLink href={PATHNAMES.LOGIN}>
           <Button variant="text">
             <ArrowBackIcon />
           </Button>
-        </Link>
+        </LocalizedLink>
 
         <Box
           sx={{
