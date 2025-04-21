@@ -16,15 +16,12 @@ export const generateStaticParams = async () => {
   return languages.map(locale => ({ locale }));
 };
 
-export default async function RootLayout({
-  children,
-  params,
-}: Readonly<{
+interface LayoutProps {
   children: React.ReactNode;
-  params: {
-    locale: string;
-  };
-}>) {
+  params: { locale: string };
+}
+
+export default async function RootLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
 
   const direction = LANGUAGES_WITH_RTL.includes(locale) ? 'rtl' : 'ltr';
