@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useParams } from 'next/navigation';
 import { useRegistrationStore } from '@/store/registrationStore';
 import { yupResolver } from '@hookform/resolvers/yup';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -9,7 +10,9 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import { PasswordField } from '@/components/FormField/PasswordField';
 import { PhoneField } from '@/components/FormField/PhoneField';
 import { LocalizedLink } from '@/components/Link';
+import { useTranslation } from '@/lib/i18n/client';
 import { PATHNAMES } from '@/constants/routes';
+import { NC, registerTrns } from '../trns';
 import { REGISTER_FORM_VALIDATION_SCHEMA } from './constants';
 
 type RegisterFormData = {
@@ -22,6 +25,9 @@ type RegisterFormData = {
 };
 
 export const RegisterForm = () => {
+  const locale = useParams()?.locale as string;
+  const { t: tRegister } = useTranslation(locale, NC);
+
   const methods = useForm<RegisterFormData>({
     resolver: yupResolver(REGISTER_FORM_VALIDATION_SCHEMA),
   });
@@ -55,7 +61,7 @@ export const RegisterForm = () => {
         }}
       >
         <Typography variant="h4" sx={{ marginBottom: '40px' }}>
-          Register
+          {tRegister(registerTrns.title)}
         </Typography>
 
         <LocalizedLink href={PATHNAMES.LOGIN}>
@@ -75,7 +81,7 @@ export const RegisterForm = () => {
           }}
         >
           <TextField
-            label="First Name"
+            label={tRegister(registerTrns.firstNameLabel)}
             type="text"
             {...methods.register('firstName')}
             error={!!methods.formState.errors.firstName}
@@ -83,7 +89,7 @@ export const RegisterForm = () => {
           />
 
           <TextField
-            label="Last Name"
+            label={tRegister(registerTrns.lastNameLabel)}
             type="text"
             {...methods.register('lastName')}
             error={!!methods.formState.errors.lastName}
@@ -93,7 +99,7 @@ export const RegisterForm = () => {
           <PhoneField name="phone" />
 
           <TextField
-            label="Email Address"
+            label={tRegister(registerTrns.emailLabel)}
             type="email"
             {...methods.register('email')}
             error={!!methods.formState.errors.email}
@@ -101,17 +107,17 @@ export const RegisterForm = () => {
           />
 
           <PasswordField
-            label="Password"
+            label={tRegister(registerTrns.passwordLabel)}
             register={methods.register('password')}
             error={!!methods.formState.errors.password}
             helperText={
               methods.formState.errors.password?.message ||
-              'Password must contain 8 characters, 1 uppercase, 1 lowercase, and 1 digit.'
+              tRegister(registerTrns.passwordRequirements)
             }
           />
 
           <PasswordField
-            label="Confirm Password"
+            label={tRegister(registerTrns.confirmPasswordLabel)}
             register={methods.register('confirmPassword')}
             error={!!methods.formState.errors.confirmPassword}
             helperText={methods.formState.errors.confirmPassword?.message}
@@ -126,7 +132,7 @@ export const RegisterForm = () => {
             marginBlock: '16px',
           }}
         >
-          Next
+          {tRegister(registerTrns.nextButton)}
         </Button>
       </Box>
     </FormProvider>

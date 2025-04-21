@@ -1,0 +1,11 @@
+{
+  "title": "Register",
+  "first-name-label": "First Name",
+  "last-name-label": "Last Name",
+  "phone-label": "Phone Number",
+  "email-label": "Email Address",
+  "password-label": "Password",
+  "confirm-password-label": "Confirm Password",
+  "password-requirements": "Password must contain 8 characters, 1 uppercase, 1 lowercase, and 1 digit.",
+  "next-button": "Next"
+}

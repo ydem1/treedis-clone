@@ -1,0 +1,11 @@
+{
+  "title": "הרשמה",
+  "first-name-label": "שם פרטי",
+  "last-name-label": "שם משפחה",
+  "phone-label": "מספר טלפון",
+  "email-label": "כתובת אימייל",
+  "password-label": "סיסמה",
+  "confirm-password-label": "אשר סיסמה",
+  "password-requirements": "הסיסמה חייבת להכיל 8 תווים, אות אחת גדולה, אות אחת קטנה וספרה אחת.",
+  "next-button": "הבא"
+}
