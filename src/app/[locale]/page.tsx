@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
+import { homeTrns, NC } from '@/page-components/home/trns';
 import { LocalizedLink } from '@/components/Link';
 import { useTranslation } from '@/lib/i18n';
 import { PATHNAMES } from '@/constants/routes';
@@ -6,7 +7,7 @@ import { PATHNAMES } from '@/constants/routes';
 export default async function Home({ params }: { params: { locale: string } }) {
   const { locale } = await params;
 
-  const { t: tHero } = await useTranslation(locale, 'admin');
+  const { t: tHome } = await useTranslation(locale, NC);
 
   return (
     <Box
@@ -18,9 +19,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
         height: '100%',
       }}
     >
-      <Typography variant="h1" sx={{ marginBottom: '' }}>
-        Welcome!
-      </Typography>
+      <Typography variant="h1">{tHome(homeTrns.title)}</Typography>
 
       <Box
         sx={{
@@ -31,13 +30,13 @@ export default async function Home({ params }: { params: { locale: string } }) {
       >
         <LocalizedLink href={PATHNAMES.LOGIN}>
           <Button type="submit" color="primary">
-            {tHero('name')}
+            {tHome(homeTrns.registerButton)}
           </Button>
         </LocalizedLink>
 
         <LocalizedLink href={PATHNAMES.REGISTER}>
           <Button type="submit" color="primary">
-            {tHero('name')}
+            {tHome(homeTrns.registerButton)}
           </Button>
         </LocalizedLink>
       </Box>
