@@ -1,0 +1,9 @@
+{
+  "required": "Required field",
+  "email": "Email must be a valid email address",
+  "min-symbols": "Minimum length is {{min}}",
+  "max-symbols": "Maximum length is {{max}}",
+  "phone-length": "Phone number must have between {{min}} and {{max}} digits",
+  "password-strength": "Password must be at least 8 english characters, and contain 1 uppercase, 1 lowercase and 1 digit",
+  "password-match": "Passwords do not match"
+}

@@ -12,6 +12,7 @@ import { PhoneField } from '@/components/FormField/PhoneField';
 import { LocalizedLink } from '@/components/Link';
 import { useTranslation } from '@/lib/i18n/client';
 import { PATHNAMES } from '@/constants/routes';
+import { NC as VALIDATION_NC } from '@/constants/validationSchemas/trns';
 import { NC, registerTrns } from '../trns';
 import { REGISTER_FORM_VALIDATION_SCHEMA } from './constants';
 
@@ -27,9 +28,10 @@ type RegisterFormData = {
 export const RegisterForm = () => {
   const locale = useParams()?.locale as string;
   const { t: tRegister } = useTranslation(locale, NC);
+  const { t: tValidation } = useTranslation(locale, VALIDATION_NC);
 
   const methods = useForm<RegisterFormData>({
-    resolver: yupResolver(REGISTER_FORM_VALIDATION_SCHEMA),
+    resolver: yupResolver(REGISTER_FORM_VALIDATION_SCHEMA(tValidation)),
   });
 
   const setData = useRegistrationStore(state => state.setData);

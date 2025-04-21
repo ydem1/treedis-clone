@@ -10,6 +10,7 @@ import { PasswordField } from '@/components/FormField/PasswordField';
 import { LocalizedLink } from '@/components/Link';
 import { useTranslation } from '@/lib/i18n/client';
 import { PATHNAMES } from '@/constants/routes';
+import { NC as VALIDATION_NC } from '@/constants/validationSchemas/trns';
 import { loginTrns, NC } from '../trns';
 import { LOGIN_FORM_VALIDATION_SCHEMA } from './constants';
 
@@ -21,6 +22,7 @@ type LoginFormData = {
 export const LoginForm = () => {
   const locale = useParams()?.locale as string;
   const { t: tLogin } = useTranslation(locale, NC);
+  const { t: tValidation } = useTranslation(locale, VALIDATION_NC);
 
   const {
     register,
@@ -28,7 +30,7 @@ export const LoginForm = () => {
     reset,
     formState: { errors },
   } = useForm<LoginFormData>({
-    resolver: yupResolver(LOGIN_FORM_VALIDATION_SCHEMA),
+    resolver: yupResolver(LOGIN_FORM_VALIDATION_SCHEMA(tValidation)),
   });
   const setData = useLoginStoreStore(state => state.setData);
 
