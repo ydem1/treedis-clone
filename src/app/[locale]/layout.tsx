@@ -1,5 +1,4 @@
 import { Inter } from 'next/font/google';
-import { notFound } from 'next/navigation';
 import { PageLayout } from '@/components/Layouts/PageLayout';
 import { languages } from '@/lib/i18n/settings';
 import { ThemeRegistry } from '@/lib/mui/ThemeRegistry';
@@ -26,8 +25,6 @@ export default async function RootLayout({
   };
 }>) {
   const { locale } = await params;
-
-  if (!languages.includes(locale)) notFound();
 
   return (
     <html lang={locale}>

@@ -1,6 +1,11 @@
 import { NextResponse } from 'next/server';
-import { cookieName, fallbackLng, languages } from '@/services/i18n/settings';
 import acceptLanguage from 'accept-language';
+import {
+  cookieName,
+  fallbackLng,
+  headerName,
+  languages,
+} from '@/lib/i18n/settings';
 
 acceptLanguage.languages(languages);
 
@@ -17,7 +22,7 @@ export function middleware(req) {
     lng = acceptLanguage.get(req.cookies.get(cookieName).value);
   }
   if (!lng) {
-    lng = acceptLanguage.get(req.headers.get('Accept-Language'));
+    lng = acceptLanguage.get(req.headers.get(headerName));
   }
   if (!lng) {
     lng = fallbackLng;
