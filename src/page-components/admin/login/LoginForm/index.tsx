@@ -2,12 +2,15 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useParams } from 'next/navigation';
 import { useLoginStoreStore } from '@/store/loginStore';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { PasswordField } from '@/components/FormField/PasswordField';
 import { LocalizedLink } from '@/components/Link';
+import { useTranslation } from '@/lib/i18n/client';
 import { PATHNAMES } from '@/constants/routes';
+import { loginTrns, NC } from '../trns';
 import { LOGIN_FORM_VALIDATION_SCHEMA } from './constants';
 
 type LoginFormData = {
@@ -16,6 +19,9 @@ type LoginFormData = {
 };
 
 export const LoginForm = () => {
+  const locale = useParams()?.locale as string;
+  const { t: tLogin } = useTranslation(locale, NC);
+
   const {
     register,
     handleSubmit,
@@ -49,10 +55,11 @@ export const LoginForm = () => {
         marginInline: 'auto',
       }}
     >
-      <Typography variant="h4" sx={{ marginBottom: '40px' }}>
-        Welcome! <br />
-        Login to continue
-      </Typography>
+      <Typography
+        variant="h4"
+        sx={{ marginBottom: '40px' }}
+        dangerouslySetInnerHTML={{ __html: tLogin(loginTrns.title) }}
+      />
 
       <Box
         sx={{
@@ -62,7 +69,7 @@ export const LoginForm = () => {
         }}
       >
         <TextField
-          label="Email Address"
+          label={tLogin(loginTrns.emailLabel)}
           type="email"
           {...register('email')}
           error={!!errors.email}
@@ -70,7 +77,7 @@ export const LoginForm = () => {
         />
 
         <PasswordField
-          label="Password"
+          label={tLogin(loginTrns.passwordLabel)}
           register={register('password')}
           error={!!errors.password}
           helperText={errors.password?.message}
@@ -85,7 +92,7 @@ export const LoginForm = () => {
           marginBlock: '16px',
         }}
       >
-        Login
+        {tLogin(loginTrns.loginButton)}
       </Button>
 
       <Box
@@ -94,10 +101,12 @@ export const LoginForm = () => {
           justifyContent: 'space-between',
         }}
       >
-        <Button variant="text">Forgot password?</Button>
+        <Button variant="text">{tLogin(loginTrns.forgotPasswordButton)}</Button>
 
         <LocalizedLink href={PATHNAMES.REGISTER}>
-          <Button variant="text">Create New Account</Button>
+          <Button variant="text">
+            {tLogin(loginTrns.createNewAccountButton)}
+          </Button>
         </LocalizedLink>
       </Box>
     </Box>

@@ -30,7 +30,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
       >
         <LocalizedLink href={PATHNAMES.LOGIN}>
           <Button type="submit" color="primary">
-            {tHome(homeTrns.registerButton)}
+            {tHome(homeTrns.loginButton)}
           </Button>
         </LocalizedLink>
 
