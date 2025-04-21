@@ -3,6 +3,8 @@ export const adminTrns = {
   bannerHighlight: 'banner-highlight',
   bannerLine2: 'banner-line-2',
   bannerLine3: 'banner-line-3',
+
+  toggleButton: 'toggle-button',
 };
 
 export const NC = 'admin';
