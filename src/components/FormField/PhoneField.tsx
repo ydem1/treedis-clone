@@ -31,6 +31,7 @@ export const PhoneField: FC<Props> = ({ name, defaultCountry = 'us' }) => {
   return (
     <div
       style={{ '--custom-border-color': borderColor } as React.CSSProperties}
+      dir="ltr"
     >
       <Controller
         name={name}
