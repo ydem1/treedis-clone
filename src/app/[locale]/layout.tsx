@@ -18,11 +18,11 @@ export const generateStaticParams = async () => {
 
 interface LayoutProps {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }
 
-export default async function RootLayout({ children, params }: LayoutProps) {
-  const { locale } = await params;
+export default function RootLayout({ children, params }: LayoutProps) {
+  const { locale } = params;
 
   const direction = LANGUAGES_WITH_RTL.includes(locale) ? 'rtl' : 'ltr';
 
